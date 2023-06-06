@@ -2,8 +2,12 @@
 
 {% block content %}
     <h1>New post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
+    <form method="POST" >{% csrf_token %}
+        <h3>title</h3>
+        <textarea name="{{ form.title.name }}" class="ckeditor">{{ form.title.value }}</textarea>
+        <h3>text</h3>
+        <textarea name="{{ form.text.name }}" class="ckeditor">{{ form.text.value }}</textarea>
         <button type="submit" class="save btn btn-default">Save</button>
+
     </form>
 {% endblock %}

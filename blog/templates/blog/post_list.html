@@ -1,13 +1,73 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<!--    <head>-->
+<!--            <meta charset="utf-8">-->
+<!--            <style>-->
+<!--                #navbar {-->
+<!--                    margin: 0;-->
+<!--                    padding: 0;-->
+<!--                    list-style-type: none;-->
+<!--                    width: 1000px;-->
+<!--                }-->
+<!--                #navbar li {-->
+
+<!--                    border-left: 800px solid #fefefe;-->
+<!--                    border-bottom: 1px solid #fefefe;-->
+<!--                }-->
+<!--                #navbar a {-->
+<!--                    background-color: #949494;-->
+<!--                    color: #fff;-->
+<!--                    padding: 5px;-->
+<!--                    text-decoration: none;-->
+<!--                    font-weight: bold;-->
+<!--                    border-left: 5px solid #33ADFF;-->
+<!--                    display: block;-->
+<!--                }-->
+<!--                #navbar a:hover {-->
+<!--                    background-color: #666;-->
+<!--                    border-left: 5px solid #3333FF;-->
+<!--                }-->
+<!--             </style>-->
+<!--        </head>-->
+
+<!--        <body>-->
+
+<!--            <ul id="navbar">-->
+<!--                <li><a href="#">Главная</a></li>-->
+<!--                <li><a href="#">Новости</a></li>-->
+<!--                <li><a href="#">Контакты</a></li>-->
+<!--                <li><a href="#">О нас</a></li>-->
+<!--            </ul>-->
+
+<!--        </body>-->
+
     {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                <p>Опубликовано: {{ post.published_date }}</p>
+        <head>
+            <meta charset="utf-8">
+            <style>
+                #text-justify {
+                    background: #d5b9e3;
+                    box-shadow: 0 0 10px #a266c0;
+                    padding: 0px 0px 0px 7px;
+                    width: 1435px;
+                    overflow: auto;
+                    margin-bottom: 10px;
+
+                }
+
+            </style>
+        </head>
+        <body>
+            <div id="text-justify">
+                <div class="post">
+                    <div class="date">
+                        <p>Опубликовано: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|safe }}</a></h1>
+                    <p>{{ post.text|safe }}</p>
+                </div>
             </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
+        </body>
     {% endfor %}
 {% endblock %}
